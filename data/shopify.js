@@ -1,8 +1,11 @@
 const axios = require("axios");
 
+require("dotenv").config();
+
 // ACTUAL SHOP
 let domain = process.env.SHOPIFY_DOMAIN;
 let accessToken = process.env.SHOPIFY_ACC_TOKEN;
+
 
 let url = `https://${domain}.myshopify.com/admin/api/2023-04/graphql.json`;
 

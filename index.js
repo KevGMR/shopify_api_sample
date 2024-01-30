@@ -2,6 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 
+const shopifyGraphQL = require("./data/shopify.js")
+
+
 require("dotenv").config();
 
 const app = express();
@@ -40,8 +43,12 @@ async function getProducts() {
     );
 }
 
-app.get('/', (req,res) => {
-    const data = getProducts()
-    console.log(data);
+app.get('/', async (req,res) => {
+    try{
+        const data = await getProducts()
+        console.log(data);
+    } catch(err) {
+        console.log({err});
+    }
 })
 
